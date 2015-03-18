@@ -5,14 +5,19 @@ app.use express.static(__dirname + '/app')
 app.engine 'html', require('ejs').renderFile
 app.set 'views', __dirname + '/app/views'
 
-app.use require('connect-livereload')()
+if process.env.ENV = 'dev'
+  app.use require('connect-livereload')()
 
-app.get '/', (req, res) ->
-  res.render 'index.html'
+app.use express.static(__dirname + '/app')
+app.engine 'html', require('ejs').renderFile
+app.set 'views', __dirname + '/app/views'
 
-server = app.listen 3000, () ->
-  
+router = express.Router()
+app.use require('./lib/router')(router)
+
+port = process.env.PORT || 3000
+server = app.listen port, () ->
   host = server.address().address
   port = server.address().port
-
   console.log 'app listening at http://%s:%s', host, port
+

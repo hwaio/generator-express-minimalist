@@ -5,8 +5,6 @@ module.exports = (grunt) ->
   grunt.initConfig
 
     express:
-      options:
-        port: process.env.PORT || 3000
       app:
         options:
           script: 'server.js'
@@ -32,6 +30,16 @@ module.exports = (grunt) ->
           ext: '.js'
         ]
 
+    sass:
+      css:
+        files: [
+          expand: true,
+          cwd: 'app/css'
+          src: '**/*.sass'
+          dest: 'app/css'
+          ext: '.css'
+        ]
+
     stylus:
       css:
         files: [
@@ -52,6 +60,9 @@ module.exports = (grunt) ->
       jsCoffee:
         files: ['app/js/**/*.coffee']
         tasks: ['newer:coffee:js']
+      cssSass:
+        files: ['app/css/**/*.sass']
+        tasks: ['newer:sass:css']
       cssStylus:
         files: ['app/css/**/*.styl']
         tasks: ['newer:stylus:css']
@@ -79,7 +90,9 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'default', [
     'coffees'
+    'sass:css'
     'stylus:css'
     'express:app'
     'watch'
   ]
+

@@ -11,6 +11,7 @@ module.exports = generators.Base.extend({
         'grunt-express-server',
         'grunt-newer',
         'grunt-contrib-stylus',
+        'grunt-contrib-sass',
         'load-grunt-tasks',
         'connect-livereload'
     ], {'saveDev': true});
@@ -29,12 +30,20 @@ module.exports = generators.Base.extend({
         this.destinationPath('server.coffee')
         );
     this.fs.copy(
+        this.templatePath('router.coffee'),
+        this.destinationPath('lib/router.coffee')
+        );
+    this.fs.copy(
         this.templatePath('Gruntfile.coffee'),
         this.destinationPath('Gruntfile.coffee')
         );
     this.fs.copy(
         this.templatePath('package.json'),
         this.destinationPath('package.json')
+        );
+    this.fs.copy(
+        this.templatePath('.bowerrc'),
+        this.destinationPath('.bowerrc')
         );
   }
 })
