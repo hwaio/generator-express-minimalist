@@ -21,6 +21,10 @@ module.exports = generators.Base.extend({
         this.templatePath('index.html'),
         this.destinationPath('app/views/index.html')
         );
+    this.fs.copy(
+        this.templatePath('foundation.sass'),
+        this.destinationPath('app/css/foundation.sass')
+        );
     this.fs.write(this.destinationPath('app/css/main.styl'),'');
     this.fs.write(this.destinationPath('app/js/main.coffee'),'');
   },
