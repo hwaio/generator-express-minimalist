@@ -1,7 +1,14 @@
 var generators = require('yeoman-generator');
 module.exports = generators.Base.extend({
   installDependencies: function() {
-    this.npmInstall(['express', 'ejs']);
+    this.npmInstall([
+      'express',
+      'ejs',
+      'passport',
+      'passport-facebook',
+      'express-session',
+      'cookie-parser'
+    ]);
   },
   installDevDependencies: function() {
     this.npmInstall([
