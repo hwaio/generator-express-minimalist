@@ -16,6 +16,11 @@ module.exports = generators.Base.extend({
         'connect-livereload'
     ], {'saveDev': true});
   },
+  installBower: function() {
+    this.bowerInstall([
+        'foundation'
+    ])
+  },
   copyPublicFiles: function () {
     this.fs.copy(
         this.templatePath('index.html'),
