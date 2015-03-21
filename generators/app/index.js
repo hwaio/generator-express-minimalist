@@ -43,6 +43,10 @@ module.exports = generators.Base.extend({
         this.destinationPath('lib/router.coffee')
         );
     this.fs.copy(
+        this.templatePath('passport.coffee'),
+        this.destinationPath('lib/passport.coffee')
+        );
+    this.fs.copy(
         this.templatePath('Gruntfile.coffee'),
         this.destinationPath('Gruntfile.coffee')
         );
