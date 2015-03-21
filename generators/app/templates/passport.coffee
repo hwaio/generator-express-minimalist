@@ -9,5 +9,3 @@ module.exports = () ->
     }, (accessToken, refreshToken, profile, done) ->
       
   ))
-
-  return passport
