@@ -1,13 +1,6 @@
 express = require 'express'
-app = express()
 passport = require 'passport'
-
-app.use express.static(__dirname + '/app')
-app.engine 'html', require('ejs').renderFile
-app.set 'views', __dirname + '/app/views'
-
-if process.env.ENV = 'dev'
-  app.use require('connect-livereload')()
+app = express()
 
 app.use express.static(__dirname + '/app')
 app.engine 'html', require('ejs').renderFile
@@ -15,16 +8,17 @@ app.set 'views', __dirname + '/app/views'
 
 app.use require('cookie-parser')()
 app.use require('express-session')(
-  secret: 'secret',
+  secret: 'impressables',
   resave: false,
   saveUninitialized: true
 )
 app.use passport.initialize()
 app.use passport.session()
 require('./lib/passport')()
+app.use require('./lib/router')()
 
-router = express.Router()
-app.use require('./lib/router')(router)
+if process.env.ENV = 'dev'
+  app.use require('connect-livereload')()
 
 port = process.env.PORT || 3000
 server = app.listen port, () ->

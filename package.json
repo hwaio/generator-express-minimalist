@@ -1,6 +1,6 @@
 {
   "name": "generator-express-minimalist",
-  "version": "0.1.11",
+  "version": "0.1.13",
   "description": "minimalist express generator",
   "keywords": [
     "yeoman-generator"
