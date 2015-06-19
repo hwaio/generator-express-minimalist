@@ -1,5 +1,4 @@
 express = require 'express'
-passport = require 'passport'
 app = express()
 
 if process.env.ENV == 'dev'
