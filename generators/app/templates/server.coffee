@@ -6,19 +6,15 @@ if process.env.ENV == 'dev'
   app.use require('connect-livereload')()
 
 app.use express.static(__dirname + '/app')
-app.engine 'html', require('ejs').renderFile
+app.engine 'html', require('jade').__express
 app.set 'views', __dirname + '/app/views'
 
-app.use require('cookie-parser')()
-app.use require('express-session')(
-  secret: 'impressables',
-  resave: false,
-  saveUninitialized: true
-)
-app.use passport.initialize()
-app.use passport.session()
-require('./lib/passport')()
-app.use require('./lib/router')()
+router = express.Router()
+router.get '/', (req, res) ->
+  res.render 'index.html'
+router.get '*', (req, res) ->
+  res.send 404
+app.use router
 
 port = process.env.PORT || 3000
 server = app.listen port, () ->

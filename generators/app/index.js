@@ -3,11 +3,7 @@ module.exports = generators.Base.extend({
   installDependencies: function() {
     this.npmInstall([
       'express',
-      'ejs',
-      'passport',
-      'passport-facebook',
-      'express-session',
-      'cookie-parser'
+      'jade'
     ]);
   },
   installDevDependencies: function() {
@@ -25,17 +21,12 @@ module.exports = generators.Base.extend({
   },
   installBower: function() {
     this.bowerInstall([
-        'foundation'
     ])
   },
   copyPublicFiles: function () {
     this.fs.copy(
         this.templatePath('index.html'),
         this.destinationPath('app/views/index.html')
-        );
-    this.fs.copy(
-        this.templatePath('foundation.sass'),
-        this.destinationPath('app/css/foundation.sass')
         );
     this.fs.write(this.destinationPath('app/css/main.styl'),'');
     this.fs.write(this.destinationPath('app/js/main.coffee'),'');
@@ -44,14 +35,6 @@ module.exports = generators.Base.extend({
     this.fs.copy(
         this.templatePath('server.coffee'),
         this.destinationPath('server.coffee')
-        );
-    this.fs.copy(
-        this.templatePath('router.coffee'),
-        this.destinationPath('lib/router.coffee')
-        );
-    this.fs.copy(
-        this.templatePath('passport.coffee'),
-        this.destinationPath('lib/passport.coffee')
         );
     this.fs.copy(
         this.templatePath('Gruntfile.coffee'),
