@@ -5,7 +5,7 @@ if process.env.ENV == 'dev'
   app.use require('connect-livereload')()
 
 app.use express.static(__dirname + '/app')
-app.engine 'html', require('jade').__express
+app.engine 'html', require('ejs').renderFile
 app.set 'views', __dirname + '/app/views'
 
 router = express.Router()

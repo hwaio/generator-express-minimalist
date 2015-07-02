@@ -3,7 +3,7 @@ module.exports = generators.Base.extend({
   installDependencies: function() {
     this.npmInstall([
       'express',
-      'jade'
+      'ejs'
     ]);
   },
   installDevDependencies: function() {
