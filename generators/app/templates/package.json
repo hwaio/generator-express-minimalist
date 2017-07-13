@@ -8,12 +8,10 @@
   "devDependencies": {
     "grunt": "",
     "grunt-contrib-watch": "",
-    "grunt-contrib-coffee": "",
     "load-grunt-tasks": "",
     "connect-livereload": "",
     "grunt-express-server": "",
-    "grunt-newer": "",
-    "grunt-contrib-stylus": ""
+    "grunt-newer": ""
   },
   "dependencies": {
     "express": "",

@@ -1,5 +1,6 @@
-module.exports = function(grunt) {
-  require('load-grunt-tasks')(grunt);
+module.exports = (grunt) => {
+  require('load-grunt-tasks')(grunt)
+
   grunt.initConfig({
     express: {
       app: {
@@ -25,5 +26,5 @@ module.exports = function(grunt) {
       }
     }
   });
-  return grunt.registerTask('default', ['express:app', 'watch']);
+  return grunt.registerTask('default', ['express:app', 'watch'])
 };
